@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test_Data_Prime</title>
+    <link rel="stylesheet" href="style.css">
+ </head>
+<body>
+    <div class="job">
+        <div  class="main_box" >
+             
+            <img id="m_mouse" class="my_mouse" src="my-mouse.png" style="position: fixed; z-index: 10;"  >     
+              
+            <div onmouseup="transformation('test_task');"  id="test_task" class="Rectangle task" >
+                                
+                    <div class="anime_1">
+                        <img id="push_1" class="img_0" src="move_1.png" alt="radiob">
+                    
+                    </div>
+                    
+                   
+                    <div class="anime_3">
+                      <img class="tail" src="move_1.png" alt="rad-but">
+                        
+                    </div>
+                    
+                    <div class="anime_2">
+                        <img class="img_0_0" src="move.png" alt="rad-but">
+                    </div>
+                    
+                   
+                	<div id="child_1"> 
+                	    <img class="img_1 No_matter" src="calendar-i.png" alt="calendar"> 
+                            
+               		 </div>
+                
+                
+              	  <div id="child_2" >
+                    
+                    <img class="img_2" src="radiobutton.png" alt="radio_2" > 
+                    <div class = "No_matter">  No list  </div>
+                    <img class="img_2" src="Vector_2.svg" alt="arrow" > 
+              	  </div>
+
+              	  <div id="task_0" class="text_transform" width="20px">
+                    <input  id="task_n" class = "hidden_text" width="20px" type="text" placeholder="Write a new task" hidden maxLength="37">
+
+               	 </div>
+               
+                 <div id="replace" class= "begin" width="160px" >Write a new task 
+                
+                </div>
+                   
+            </div>
+
+        </div>
+    </div>
+   
+
+	 
+ <script>
+		 
+    test_task.addEventListener("mousedown", transport_0);
+		 
+	  function transport_0()
+	 	{
+            let e = document.getElementById("m_mouse"); 
+			test_task.style.cursor = "none";
+				e.style.left = window.event.pageX + 1 + "px";
+    		 	e.style.top = 1 + window.event.pageY + "px" ;
+				e.style.left = e.style.left - 1 + "px";
+    		 	e.style.top = e.style.top - 1 + "px";
+			e.style.opacity = "1";
+							 
+         }
+    
+	 
+	 test_task.addEventListener("mouseup", transport);
+		 
+	  function transport()
+	 	{
+
+             let e = document.getElementById("m_mouse"); 
+			 e.classList.add('animate');
+
+         }	 
+    
+	
+	 function transformation(id) {
+		
+	  setTimeout( function ()  {
+			
+        let e = document.getElementById(id);  
+		 
+		 m_mouse.style.opacity = "0.0";		  
+	         
+         e.classList.add('animate');
+         e.lastElementChild.classList.add('animate');
+         
+                
+         e.style.background = '#FFF';
+         e.style.color = '#CFD1DB';
+
+         e.lastElementChild.style.background = '#FFF';
+         e.lastElementChild.style.color = 'black';
+          
+         for (let i = 0; i < e.children.length - 2; i++) {
+
+            e.children[i].style.color = '#6F727A';  
+            e.children[i].style.display = 'flex';  
+            e.children[i].style.opacity = '0.8';   
+
+         }
+				       
+         for (let i = 0; i < e.children.length - 2; i++) {
+            e.children[i].classList.add('animate');
+         }
+         
+         e.children[0].firstElementChild.classList.add('animate');
+         e.children[1].firstElementChild.classList.add('animate');
+         e.children[2].firstElementChild.classList.add('animate');
+         
+	
+         
+         setTimeout( function() {
+			 push_1.hidden = true;
+             replace.remove();
+             
+             var str = document.getElementById('task_n').getAttribute('width');
+             
+             str = str.replace(/px/, "");
+             task_n.style.width = +str + 185 + "px";
+             task_n.style.marginLeft = "60px";
+             task_n.hidden = false;
+
+             task_n.focus();
+             
+               
+         }, 650);
+         
+     }, 420);    
+         
+    }
+		
+	
+    
+    task_0.addEventListener("keydown", changeS);
+     let flag = 0 ;
+     let maxL = 23; 
+	         
+    function changeS(){
+			         
+     var jj = task_0.children.length - 1;
+
+        let str2 = document.getElementById('task_n').value;
+        
+        if ((str2.match(/\/\//)) && (flag == 0)) {
+            
+            let b = task_n.style.width;
+             
+             b = b.replace(/px/,'');
+             task_n.style.width = +b + 10 + "px";
+               
+             task_0.children[jj].placeholder = "";
+            
+            let my_cl = document.createElement('input');
+            my_cl.classList.add('hidden_text');
+            task_0.append(my_cl);
+            task_0.children[jj+1].value.length = 0;
+            task_0.children[jj+1].style.width = "300px";
+            task_0.children[jj+1].style.marginLeft = "-50px";
+            task_0.children[jj+1].value = "write note";
+            task_0.children[jj+1].style.color = "#CC9900";
+            test_task.style.background = "linear-gradient(#FFFFFF, #FFFFEE)";
+            task_0.children[jj+1].style.background = "#FFFFEE";
+            
+            task_0.children[jj+1].focus();
+			
+            jj == jj+1;
+            flag = 1;
+            maxL = 28;
+			
+            return;
+
+        }
+		
+		if (flag == 1){
+			task_0.children[1].value = "";
+			flag = 2;
+		}
+     
+        if ((task_0.children[jj].value.length >= maxL) ) {
+            
+                test_task.style.height = 110 + jj*40 + "px";
+             
+            
+            setTimeout( function() {
+         
+               
+         task_0.children[jj].placeholder = "";
+            
+            let my_cl = document.createElement('input');
+            my_cl.classList.add('hidden_text');
+            task_0.append(my_cl);
+            task_0.children[jj+1].value.length = 0;
+            task_0.children[jj+1].style.width = "530px";
+            task_0.children[jj+1].style.marginLeft = "60px";
+            task_0.children[jj+1].style.color = "#CC9900";
+            task_0.children[jj+1].style.background = "#FFFFEE";
+            task_0.children[jj+1].focus();
+            maxL = 46;
+                
+                           
+         }, 1);
+            
+        }
+          
+    }
+
+    </script>
+    
+  
+</body>
+</html>
