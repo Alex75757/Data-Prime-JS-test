@@ -9,7 +9,7 @@
     <div class="job">
         <div  class="main_box" >
              
-            <img id="m_mouse" class="my_mouse" src="my-mouse.png" style="position: fixed; z-index: 10;"  >     
+            <img id="m_mouse" class="my_mouse" src="my-mouse_small.png" style="position: fixed; z-index: 10;"  >     
               
             <div onmouseup="transformation('test_task');"  id="test_task" class="Rectangle task" >
                                 
@@ -168,13 +168,14 @@
             task_0.append(my_cl);
             task_0.children[jj+1].value.length = 0;
             task_0.children[jj+1].style.width = "300px";
-            task_0.children[jj+1].style.marginLeft = "-50px";
-            task_0.children[jj+1].value = "write note";
+            task_0.children[jj+1].style.marginLeft = "-54px";
+            
             task_0.children[jj+1].style.color = "#CC9900";
             test_task.style.background = "linear-gradient(#FFFFFF, #FFFFEE)";
             task_0.children[jj+1].style.background = "#FFFFEE";
             
-            task_0.children[jj+1].focus();
+            
+			task_0.children[jj+1].value = "write note";
 			
             jj == jj+1;
             flag = 1;
@@ -185,6 +186,7 @@
         }
 		
 		if (flag == 1){
+			task_0.children[1].focus();
 			task_0.children[1].value = "";
 			flag = 2;
 		}
